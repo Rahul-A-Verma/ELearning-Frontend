@@ -1,0 +1,99 @@
+/* Sidebar Styles */
+.sidebar {
+  width: 220px;
+  min-height: calc(100vh - 60px); /* Adjust height after navbar */
+  background-color: #0f172a;
+  color: white;
+  border-right: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  position: relative;
+  top: 60px; /* Push down below navbar */
+}
+
+/* Sidebar list styles */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.sidebar ul li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
+.sidebar ul li .icon {
+  font-size: 20px;
+}
+
+.sidebar ul li span {
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+/* Dashboard admin layout */
+.dashboard-admin {
+  display: flex;
+  min-height: calc(100vh - 60px);
+}
+
+/* Content beside sidebar */
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-top: 60px; /* Navbar height */
+  /* margin-left: 220px; Sidebar width */
+}
+
+/* --------- Responsive (Mobile) --------- */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-right: none;
+    border-bottom: 1px solid gray;
+    top: 20px; /* still after navbar */
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .sidebar ul li {
+    padding: 10px;
+  }
+
+  .sidebar ul li span {
+    display: none; /* hide text, icons only on mobile */
+  }
+
+  .dashboard-admin {
+    flex-direction: column;
+  }
+
+  .content {
+    margin-left: 0;
+    margin-top: 120px; /* 60px navbar + 60px mobile sidebar */
+    padding: 20px;
+  }
+}

@@ -1,0 +1,62 @@
+.student-dashboard {
+  background-color: #f8f9fa;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.dashboard-header h2 {
+  font-size: 36px;
+  color: #094f9f;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.no-courses {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 40px;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.no-courses h3 {
+  font-size: 24px;
+  color: #094f9f;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.no-courses p {
+  font-size: 16px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    justify-content: center;
+  }
+
+  .no-courses {
+    width: 100%;
+    padding: 20px;
+  }
+}

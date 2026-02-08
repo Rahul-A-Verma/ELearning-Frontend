@@ -1,0 +1,89 @@
+.home {
+  position: relative;
+  height: 100vh;
+  background-image: url('../../assets/educationbg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* dark transparent overlay */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.home-content {
+  max-width: 700px;
+  color: #fff;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.home-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.home-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #ddd;
+}
+
+.common-btn {
+  background-color: #0d6efd;
+  color: #fff;
+  padding: 14px 32px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.common-btn:hover {
+  background-color: #084298;
+  transform: scale(1.05);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-content h1 {
+    font-size: 32px;
+  }
+
+  .home-content p {
+    font-size: 16px;
+  }
+
+  .common-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 26px;
+  }
+
+  .home-content p {
+    font-size: 14px;
+  }
+}
