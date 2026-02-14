@@ -1,109 +1,166 @@
-/* Reset default styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background: linear-gradient(135deg, #094f9f, #053474);
+  padding: 0 5%;
+  height: 80px;
+  background: rgba(5, 52, 116, 0.7); 
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   color: #ffffff;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-  font-size: 28px;
-  font-weight: 700;
-  cursor: pointer;
-  color: #6ec1e4;
-}
-.logo a{
-  color: #6ec1e4;
-  text-decoration: none;
-
-}
-.logo a:hover{
-  color:#8dddff;
-}
-
-
-/* Hamburger Menu */
-.hamburger {
-  width: 30px;
-  height: 20px;
-  position: relative;
-  cursor: pointer;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.hamburger span {
-  display: block;
-  height: 3px;
+  position: fixed;
   width: 100%;
-  background: white;
-  border-radius: 3px;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.4s ease;
 }
 
-/* Animate Hamburger */
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.header.scrolled {
+  height: 65px;
+  background: rgba(5, 52, 116, 0.95);
 }
 
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  flex-shrink: 0;
 }
 
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+.logo a {
+  color: #ffffff;
+  text-decoration: none;
 }
 
-/* Navigation Links */
+.logo span {
+  color: #6ec1e4;
+  transition: all 0.3s ease;
+}
+
+.logo:hover span {
+  color: #ffffff;
+  text-shadow: 0 0 10px #6ec1e4;
+}
+
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
+  height: 100%;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #ffffff;
-  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  font-weight: 500;
   transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Underline Hover Effect */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: #6ec1e4;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
 .nav-links a:hover {
-  color: #6ec1e4;
+  color: #fff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* --- THE FIX: Magnetic Wrap and Button Padding --- */
+.magnetic-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px; /* Provides the magnetic 'hitbox' */
+  cursor: pointer;
+}
+
+.auth-btn {
+  background: #6ec1e4;
+  color: #053474 !important;
+  /* Restore the missing padding here */
+  padding: 12px 30px !important; 
+  border-radius: 50px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  min-width: 120px; /* Ensures the button maintains shape */
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.auth-btn:hover {
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(110, 193, 228, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Hamburger Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition: 0.3s;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
+  .header { padding: 0 20px; }
+  .hamburger { display: flex; }
+  
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
   .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    background: #094f9f;
-    width: 100%;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #053474;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 0;
-    transform: translateY(-300px);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.5s ease;
+    justify-content: center;
+    gap: 30px;
+    transition: 0.4s ease;
   }
 
-  .nav-links.active {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+  .nav-links.active { right: 0; }
+
+  .magnetic-wrap {
+    padding: 0;
+    margin-top: 20px;
   }
 }

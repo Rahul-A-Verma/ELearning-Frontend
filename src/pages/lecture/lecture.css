@@ -1,94 +1,117 @@
-.lecture-page {
-  display: flex;
-  justify-content: space-between;
-  min-height: 80vh;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .left {
-    width: 70%;
-    padding: 10px;
-    align-items: center;
-
-    @media (max-width: 768px) {
-      width: 90%;
-    }
-  }
-
-  .right {
-    width: 30%;
-
-    .lecture-form {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0px, 2px, 4px, rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: auto;
-
-      h2 {
-        font-size: 24px;
-        color: #094f9f;
-        margin-bottom: 15px;
-      }
-
-      form {
-        text-align: left;
-
-        label {
-          display: block;
-          margin-bottom: 5px;
-          font-size: 14px;
-          color: #333;
-        }
-
-        input {
-          width: 92%;
-          padding: 10px;
-          margin-bottom: 15px;
-          border: 1px solid black;
-          border-radius: 5px;
-        }
-      }
-    }
-
-    @media (max-width: 768px) {
-      width: 80%;
-      margin-bottom: 10px;
-    }
-
-    .lecture-number {
-      background-color: #fff;
-      padding: 10px;
-      border: 1px solid black;
-      margin-top: 10px;
-      border-radius: 5px;
-      text-align: center;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #094f9f;
-        color: white;
-      }
-    }
-
-    .active {
-      background-color: #094f9f;
-      color: white;
-    }
-  }
+.lecture-page-wrapper {
+  background-color: #053474;
+  min-height: 100vh;
+  padding-top: 100px;
+  color: white;
 }
 
-.progress {
-  width: 20%;
-  background-color: #333;
-  padding: 6px;
-  border-radius: 5px;
-  margin: 3px auto;
-  text-align: center;
+.learning-header {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 0 20px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6ec1e4, #ffffff);
+  box-shadow: 0 0 10px #6ec1e4;
+  transition: width 0.5s ease-in-out;
+}
+
+.lecture-container {
+  display: flex;
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.video-player-section { flex: 3; }
+
+.video-wrapper {
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  aspect-ratio: 16/9;
+}
+
+.video-wrapper video { width: 100%; display: block; }
+
+.lecture-details h1 { font-size: 28px; color: #6ec1e4; margin-top: 20px; }
+.lecture-details p { color: rgba(255, 255, 255, 0.7); margin-top: 10px; }
+
+.lecture-sidebar {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  height: fit-content;
+  max-height: 85vh;
+}
+
+.playlist-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.active-lec { background: #6ec1e4 !important; color: #053474; font-weight: bold; }
+
+.complete-tick { color: #00ff88; font-size: 20px; margin-left: auto; }
+
+.active-lec .complete-tick { color: #053474; }
+
+.add-lec-btn {
+  background: #6ec1e4;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.del-btn-small {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  border: 2px solid #ff4d4d;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+.del-btn-small:hover{
+  background-color: #ff4d4d;
   color: white;
+  transition: 0.2s ease-in;
+}
+@media (max-width: 1024px) {
+  .lecture-container { flex-direction: column; }
 }

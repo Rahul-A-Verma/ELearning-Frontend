@@ -1,43 +1,73 @@
-.home {
-  position: relative;
-  height: 100vh;
-  background-image: url('../../assets/educationbg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+:root {
+  --clip: 100%; /* Default: video covers everything */
 }
 
-.overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* dark transparent overlay */
+.home {
+  position: relative;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
+  height: 100vh;
+  overflow: hidden;
+  /* background-color: #000; */
 }
 
 .home-content {
   max-width: 700px;
   color: #fff;
-  animation: fadeIn 1.5s ease-in-out;
+  padding: 0 20px;
+  will-change: transform, opacity;
+  z-index: 20;
+  position: relative;
 }
 
 .home-content h1 {
   font-size: 48px;
   margin-bottom: 20px;
   font-weight: 700;
-  letter-spacing: 1px;
 }
 
-.home-content p {
-  font-size: 20px;
-  margin-bottom: 30px;
-  color: #ddd;
+
+.btm-text-layer {
+ position: absolute;
+  bottom: 50px;
+  left: 50px;
+  z-index: 10; /* Highest - stays on top of video and bg */
+  color: #fff;
+  pointer-events: none;
+}
+
+.btm-text-layer .tagline {
+font-size: 14px;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+.btm-text-layer h2 {
+ font-size: 2.2rem;
+  line-height: 1.2;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.btm-text-layer .sub-desc {
+ font-size: 1rem;
+  opacity: 0.7;
+}
+
+.video-container {
+ position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2; /* Middle */
+  clip-path: circle(var(--clip) at 50% 50%);
+  background-color: #000;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .common-btn {
@@ -48,42 +78,38 @@
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+  position: relative;
 }
 
-.common-btn:hover {
-  background-color: #084298;
-  transform: scale(1.05);
+/* Ensure the background layer is properly centered */
+.home-text-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #111; /* Darker background so text pops */
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../../assets/educationbg.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
 }
-
-/* Fade-in animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 /* Responsive */
 @media (max-width: 768px) {
-  .home-content h1 {
-    font-size: 32px;
-  }
-
-  .home-content p {
-    font-size: 16px;
-  }
-
-  .common-btn {
-    padding: 12px 24px;
-    font-size: 16px;
-  }
+  .home-content h1 { font-size: 32px; }
+  .home-content p { font-size: 16px; }
 }
-
-@media (max-width: 480px) {
-  .home-content h1 {
-    font-size: 26px;
+/* Responsive adjustments for the new text */
+@media (max-width: 768px) {
+  .btm-text-layer h2 {
+    font-size: 1.5rem;
   }
-
-  .home-content p {
-    font-size: 14px;
+  .btm-text-layer .sub-desc {
+    font-size: 0.8rem;
   }
 }

@@ -2,7 +2,7 @@
 .sidebar {
   width: 220px;
   min-height: calc(100vh - 60px); /* Adjust height after navbar */
-  background-color: #0f172a;
+  background-color: #04234e;;
   color: white;
   border-right: 1px solid gray;
   display: flex;
@@ -48,6 +48,7 @@
 .dashboard-admin {
   display: flex;
   min-height: calc(100vh - 60px);
+  background-color: #053474;;
 }
 
 /* Content beside sidebar */

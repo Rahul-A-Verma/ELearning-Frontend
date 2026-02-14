@@ -1,143 +1,110 @@
-.users {
-  background-color: #f1f4f8;
-  padding: 60px 20px;
-  min-height: 90vh;
+.users-container {
+  padding: 40px;
+  color: white;
 }
 
-.users h1 {
-  text-align: center;
-  color: #094f9f;
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.search-container,
-.sort-container {
-  margin: 10px 0;
+.users-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-.search-container input {
-  padding: 10px 15px;
-  width: 300px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.users-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #6ec1e4;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+}
+
+.search-input, .sort-select {
+  padding: 10px 20px;
+  border-radius: 12px;
   outline: none;
 }
 
-.sort-container select {
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  outline: none;
-  background-color: white;
-  cursor: pointer;
+.search-input:focus { border-color: #6ec1e4; }
+
+.table-wrapper {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
 }
 
 table {
   width: 100%;
-  background-color: white;
-  margin-top: 20px;
   border-collapse: collapse;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-thead {
-  background-color: #094f9f;
-  color: white;
-}
-
-th, td {
-  padding: 15px 20px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
 }
 
 th {
-  font-size: 16px;
+  text-align: left;
+  padding: 20px;
+  background: rgba(110, 193, 228, 0.1);
+  color: #6ec1e4;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
 td {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 15px;
 }
 
-.common-btn {
-  padding: 8px 12px;
-  background-color: #094f9f;
-  color: white;
-  border: none;
-  border-radius: 5px;
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  background: #6ec1e4;
+  color: #053474;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.role-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.role-badge.admin { background: rgba(110, 193, 228, 0.2); color: #6ec1e4; }
+.role-badge.user { background: rgba(255, 255, 255, 0.1); color: #ccc; }
+
+.update-btn {
+  background: transparent;
+  border: 1px solid #6ec1e4;
+  color: #6ec1e4;
+  padding: 6px 15px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
-.common-btn:hover {
-  background-color: #073b76;
+.update-btn:hover {
+  background: #6ec1e4;
+  color: #053474;
 }
 
-/* ✅ Mobile Styles */
 @media (max-width: 768px) {
-  .users {
-    padding: 30px 15px;
-  }
-
-  .search-container,
-  .sort-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .search-container input,
-  .sort-container select {
-    width: 100%;
-    max-width: 400px;
-  }
-
-  .users h1 {
-    font-size: 26px;
-  }
-
-  /* Hide Table Headings on Mobile */
-  thead {
-    display: none;
-  }
-
-  table, tbody, tr, td {
-    display: block;
-    width: 100%;
-  }
-
-  tr {
-    margin-bottom: 15px;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  td {
-    text-align: left;
-    padding: 10px;
-    position: relative;
-    font-size: 14px;
-    border: none;
-  }
-
-  td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    color: #333;
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  .common-btn {
-    width:fit-content;
-    margin-top: 10px;
-  }
+  .users-header { flex-direction: column; align-items: flex-start; }
+  .controls { width: 100%; flex-direction: column; }
 }
