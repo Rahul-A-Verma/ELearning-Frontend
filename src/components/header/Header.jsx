@@ -9,6 +9,7 @@ const Header = ({ isAuth }) => {
   const headerRef = useRef(null);
   const magneticButton = useRef(null);
 
+  // Magnetic Button Effect Logic
   const handleMagneticMove = (e) => {
     if (window.innerWidth <= 768 || !magneticButton.current) return;
     const btn = magneticButton.current;
@@ -34,7 +35,7 @@ const Header = ({ isAuth }) => {
     });
   };
 
-
+  // Entrance Animation
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       if (headerRef.current) {
@@ -43,7 +44,6 @@ const Header = ({ isAuth }) => {
           opacity: 0, 
           duration: 1, 
           ease: "power4.out",
-          // CRITICAL: Remove GSAP styles after the animation finishes
           clearProps: "all",
         });
       }
@@ -52,6 +52,7 @@ const Header = ({ isAuth }) => {
     return () => ctx.revert();
   }, []);
 
+  // Scroll Listener
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
@@ -61,20 +62,40 @@ const Header = ({ isAuth }) => {
   return (
     <header ref={headerRef} className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="logo">
-        <Link to="/" onClick={() => setIsMenuOpen(false)}>Learn<span>Nest</span></Link>
+        <Link to="/" onClick={() => setIsMenuOpen(false)}>
+          Learn<span>Nest</span>
+        </Link>
+      </div>
+
+      {/* Hamburger Menu - Added logic here */}
+      <div 
+        className={`hamburger ${isMenuOpen ? "open" : ""}`} 
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
       <nav className={`nav-links ${isMenuOpen ? "active" : ""}`}>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/courses">Courses</Link>
+        <Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+        <Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+        <Link to="/courses" onClick={() => setIsMenuOpen(false)}>Courses</Link>
         
         <div className="magnetic-wrap" onMouseMove={handleMagneticMove} onMouseLeave={handleMagneticReset}>
-          <Link ref={magneticButton} to={isAuth ? "/account" : "/login"} className="auth-btn">
+          <Link 
+            ref={magneticButton} 
+            to={isAuth ? "/account" : "/login"} 
+            className="auth-btn"
+            onClick={() => setIsMenuOpen(false)}
+          >
             {isAuth ? "Account" : "Login"}
           </Link>
         </div>
       </nav>
+
+      {/* Mobile Overlay */}
+      {isMenuOpen && <div className="menu-overlay" onClick={() => setIsMenuOpen(false)}></div>}
     </header>
   );
 };

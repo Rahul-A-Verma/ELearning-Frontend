@@ -62,6 +62,7 @@ font-size: 14px;
   z-index: 2; /* Middle */
   clip-path: circle(var(--clip) at 50% 50%);
   background-color: #000;
+  
 }
 
 .video-container video {
