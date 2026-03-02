@@ -72,6 +72,7 @@ const Home = () => {
           <video
             autoPlay
             loop
+            muted
             playsInline
             src={video}
           />
