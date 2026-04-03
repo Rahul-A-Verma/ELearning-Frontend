@@ -71,7 +71,7 @@ const AdminDashboard = ({ user }) => {
               <div className="stats-box course-stat">
                 <div className="stat-icon">📚</div>
                 <p className="stat-title">Total Courses</p>
-                <p className="stat-value">{stats.totalCoures || 0}</p>
+                <p className="stat-value">{stats.totalCourses || 0}</p>
               </div>
 
               {/* Added 'rest-stats' class for the delayed display */}
