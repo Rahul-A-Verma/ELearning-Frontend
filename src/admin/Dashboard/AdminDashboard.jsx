@@ -69,14 +69,14 @@ const AdminDashboard = ({ user }) => {
             <>
               {/* Added 'course-stat' class for the first display */}
               <div className="stats-box course-stat">
-                <div className="stat-icon">📚</div>
+                <div className="stat-icon">🎓</div>
                 <p className="stat-title">Total Courses</p>
                 <p className="stat-value">{stats.totalCourses || 0}</p>
               </div>
 
               {/* Added 'rest-stats' class for the delayed display */}
               <div className="stats-box rest-stats">
-                <div className="stat-icon">🎥</div>
+                <div className="stat-icon">🧑‍🏫</div>
                 <p className="stat-title">Total Lectures</p>
                 <p className="stat-value">{stats.totalLectures || 0}</p>
               </div>
